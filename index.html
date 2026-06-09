@@ -9,61 +9,64 @@
 <body class="display-only">
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-block">
-        <div class="logo-frame"><img class="division-logo" src="assets/securit-commercial-drone-services.png" alt="Secur-IT Commercial Drone Services" /></div>
-        <div class="brand-copy">
-          <h1>Flight Operations Dashboard</h1>
-          <p>Live operational data, verified flight history and commercial UAV capability</p>
-        </div>
+      <div class="brand-area">
+        <img class="main-logo" src="assets/securit-commercial-drone-services.png" alt="Secur-IT Commercial Drone Services" />
       </div>
-      <div class="top-status">
-        <span class="status-dot"></span>
-        <span id="refreshPill">Next stats refresh: —</span>
+      <div class="refresh-card">
+        <div class="refresh-kicker"><span class="status-dot"></span>Next stats refresh</div>
+        <strong id="refreshTime">—</strong>
+        <span>Live operational data, verified flight history and UAV capability</span>
       </div>
     </header>
 
     <main class="dashboard">
-      <section class="left-stack" aria-label="Flight data and operational credentials">
-        <section class="panel hero-stats-panel">
-          <div class="panel-kicker">AirData Verified</div>
-          <div class="hero-number-block">
-            <span class="hero-label">Total Flights</span>
-            <strong id="numberOfFlights">—</strong>
-          </div>
-          <div class="stat-row">
-            <article class="mini-stat">
-              <span>Flight Hours</span>
-              <strong id="flightHours">—</strong>
+      <section class="left-stack">
+        <section class="panel stats-panel" aria-label="AirData verified flight statistics">
+          <div class="panel-title icon-title"><span class="shield-icon">⌾</span>AirData Verified</div>
+          <div class="stat-list">
+            <article class="stat-row hero-stat">
+              <div class="stat-glyph">✈</div>
+              <div class="stat-label">Total Flights</div>
+              <div class="stat-value" id="numberOfFlights">—</div>
             </article>
-            <article class="mini-stat">
-              <span>Miles Flown</span>
-              <strong id="distanceFlown">—</strong>
+            <article class="stat-row">
+              <div class="stat-glyph">◷</div>
+              <div class="stat-label">Flight Hours</div>
+              <div class="stat-value small" id="flightHoursNumber">—</div>
+              <div class="stat-unit">hrs</div>
             </article>
-            <article class="mini-stat">
-              <span>Drones Flown</span>
-              <strong id="dronesFlown">—</strong>
+            <article class="stat-row">
+              <div class="stat-glyph">⌖</div>
+              <div class="stat-label">Miles Flown</div>
+              <div class="stat-value small" id="distanceFlownNumber">—</div>
+              <div class="stat-unit">mi</div>
+            </article>
+            <article class="stat-row">
+              <div class="stat-glyph">⌁</div>
+              <div class="stat-label">Drones Flown</div>
+              <div class="stat-value small" id="dronesFlown">—</div>
             </article>
           </div>
         </section>
 
-        <section class="panel credentials-panel">
-          <div class="section-heading">
-            <span>Regulatory Authorisations</span>
-            <small>Recognised operating frameworks</small>
+        <section class="panel regulatory-panel">
+          <div class="panel-header-line">
+            <div class="panel-title">Regulatory Authorisations</div>
+            <span>Recognised operating frameworks</span>
           </div>
-          <div class="reg-logo-grid">
-            <article class="reg-card caa-card">
-              <div class="reg-logo-box"><img src="assets/caa-logo.png" alt="Civil Aviation Authority" /></div>
+          <div class="reg-grid">
+            <article class="reg-card">
+              <div class="logo-frame caa-frame"><img src="assets/caa-logo.png" alt="Civil Aviation Authority" /></div>
               <strong>UK CAA</strong>
               <span>Operational Authorisation</span>
             </article>
-            <article class="reg-card easa-card">
-              <div class="reg-logo-box"><img src="assets/easa-logo.png" alt="European Aviation Safety Agency" /></div>
+            <article class="reg-card">
+              <div class="logo-frame easa-frame"><img src="assets/easa-logo.png" alt="European Aviation Safety Agency" /></div>
               <strong>EASA</strong>
               <span>A1 and A3</span>
             </article>
-            <article class="reg-card faa-card">
-              <div class="reg-logo-box"><img src="assets/faa-logo.png" alt="Federal Aviation Administration" /></div>
+            <article class="reg-card">
+              <div class="logo-frame faa-frame"><img src="assets/faa-logo.png" alt="Federal Aviation Administration" /></div>
               <strong>FAA</strong>
               <span>Part 107 Certificate</span>
             </article>
@@ -71,44 +74,34 @@
         </section>
 
         <section class="panel capability-panel">
-          <div class="section-heading">
-            <span>Commercial Capability</span>
-            <small>Survey, inspection and media delivery</small>
+          <div class="panel-header-line">
+            <div class="panel-title">Commercial Capability</div>
+            <span>Survey, inspection and media delivery</span>
           </div>
           <div class="capability-content">
-            <div class="dd-mark">
-              <img src="assets/dronedeploy-logo.png" alt="DroneDeploy" />
-            </div>
-            <div class="dd-copy">
+            <div class="dd-icon"><img src="assets/dronedeploy-logo.png" alt="DroneDeploy" /></div>
+            <div>
               <strong>DroneDeploy Certified</strong>
-              <ul>
-                <li>Fundamentals</li>
-                <li>Ground Operations</li>
-                <li>Construction Analysis</li>
-                <li>Solar Analysis</li>
-              </ul>
+              <div class="capability-list">
+                <span>Fundamentals</span>
+                <span>Ground Operations</span>
+                <span>Construction Analysis</span>
+                <span>Solar Analysis</span>
+              </div>
             </div>
           </div>
-        </section>
-
-        <section class="panel fleet-panel">
-          <div class="section-heading compact-heading">
-            <span>Operational Fleet</span>
-            <small>Multi-role UAV platform coverage</small>
-          </div>
-          <div class="fleet-grid" id="droneTypes"></div>
         </section>
       </section>
 
-      <section class="panel media-panel" aria-label="Secur-IT UAV media player">
-        <div class="media-bg" id="mediaBg"></div>
+      <section class="panel media-panel">
         <div class="media-topline">
           <div>
-            <span class="section-heading-title">Secur-IT UAV Media</span>
+            <div class="panel-title">Secur-IT UAV Media</div>
             <p>Operational footage, surveys, inspections and aerial media</p>
           </div>
-          <span class="live-pill">LIVE WALL</span>
+          <span class="live-pill">Live Wall</span>
         </div>
+        <div class="media-bg" id="mediaBg"></div>
         <div class="video-wrap">
           <div id="yt-player" aria-label="YouTube playlist player"></div>
         </div>
@@ -116,20 +109,29 @@
     </main>
 
     <footer class="bottombar">
-      <div class="authority-card">
-        <strong>CAA Operational Authorisation Granted</strong>
-        <span>Approved UAS Operator, advanced operations authorised under defined procedures</span>
-      </div>
-      <div class="airdata-card">
-        <a href="https://certificates.airdata.com/BmNedR" target="_blank" rel="noopener">
-          <img alt="Airdata UAV Drone Safety Verified Badge" src="https://certificates.airdata.com/badge?i=BmNedR&amp;r=D7qE&amp;t=7&amp;m=3&amp;size=4&amp;c=1" />
-        </a>
-        <span id="dataStatus">AirData status: waiting for stats.json</span>
-      </div>
-      <div class="progress-card">
-        <span id="lastUpdated">Last data update: —</span>
+      <section class="footer-authority">
+        <div class="footer-icon">✓</div>
+        <div>
+          <strong>CAA Operational Authorisation Granted</strong>
+          <span>Approved UAS Operator, advanced operations authorised under defined procedures</span>
+        </div>
+      </section>
+
+      <section class="footer-fleet">
+        <div class="panel-title">Operational Fleet</div>
+        <div class="fleet-ticker" aria-label="Operational fleet list">
+          <div class="fleet-track" id="fleetTrack"></div>
+        </div>
+      </section>
+
+      <section class="footer-update">
+        <div class="footer-icon calendar">▣</div>
+        <div>
+          <strong>Last data update</strong>
+          <span id="lastUpdated">—</span>
+        </div>
         <div class="progress"><div id="bar"></div></div>
-      </div>
+      </section>
     </footer>
   </div>
 

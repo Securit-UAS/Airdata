@@ -9,64 +9,64 @@
 <body class="display-only">
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand-area">
+      <div class="brand-wrap">
         <img class="main-logo" src="assets/securit-commercial-drone-services.png" alt="Secur-IT Commercial Drone Services" />
       </div>
-      <div class="refresh-card">
-        <div class="refresh-kicker"><span class="status-dot"></span>Next stats refresh</div>
+      <aside class="refresh-card">
+        <div class="refresh-label"><span class="status-dot"></span>Next stats refresh</div>
         <strong id="refreshTime">—</strong>
         <span>Live operational data, verified flight history and UAV capability</span>
-      </div>
+      </aside>
     </header>
 
     <main class="dashboard">
       <section class="left-stack">
-        <section class="panel stats-panel" aria-label="AirData verified flight statistics">
-          <div class="panel-title icon-title"><span class="shield-icon">⌾</span>AirData Verified</div>
+        <section class="panel stats-panel">
+          <h2><span class="tiny-icon">◇</span> AirData Verified</h2>
           <div class="stat-list">
-            <article class="stat-row hero-stat">
-              <div class="stat-glyph">✈</div>
+            <article class="stat-row">
+              <div class="stat-icon">✈</div>
               <div class="stat-label">Total Flights</div>
-              <div class="stat-value" id="numberOfFlights">—</div>
+              <div class="stat-value" id="numberOfFlights">954</div>
             </article>
             <article class="stat-row">
-              <div class="stat-glyph">◷</div>
+              <div class="stat-icon">◷</div>
               <div class="stat-label">Flight Hours</div>
-              <div class="stat-value small" id="flightHoursNumber">—</div>
+              <div class="stat-value" id="flightHoursNumber">87</div>
               <div class="stat-unit">hrs</div>
             </article>
             <article class="stat-row">
-              <div class="stat-glyph">⌖</div>
+              <div class="stat-icon">⌖</div>
               <div class="stat-label">Miles Flown</div>
-              <div class="stat-value small" id="distanceFlownNumber">—</div>
+              <div class="stat-value" id="distanceFlownNumber">490</div>
               <div class="stat-unit">mi</div>
             </article>
             <article class="stat-row">
-              <div class="stat-glyph">⌁</div>
+              <div class="stat-icon">⌁</div>
               <div class="stat-label">Drones Flown</div>
-              <div class="stat-value small" id="dronesFlown">—</div>
+              <div class="stat-value" id="dronesFlown">13</div>
             </article>
           </div>
         </section>
 
         <section class="panel regulatory-panel">
-          <div class="panel-header-line">
-            <div class="panel-title">Regulatory Authorisations</div>
-            <span>Recognised operating frameworks</span>
+          <div class="panel-heading">
+            <h2>Regulatory Authorisations</h2>
+            <p>Recognised operating frameworks</p>
           </div>
           <div class="reg-grid">
             <article class="reg-card">
-              <div class="logo-frame caa-frame"><img src="assets/caa-logo.png" alt="Civil Aviation Authority" /></div>
+              <div class="logo-box"><img class="caa-logo" src="assets/caa-logo.png" alt="Civil Aviation Authority" /></div>
               <strong>UK CAA</strong>
               <span>Operational Authorisation</span>
             </article>
             <article class="reg-card">
-              <div class="logo-frame easa-frame"><img src="assets/easa-logo.png" alt="European Aviation Safety Agency" /></div>
+              <div class="logo-box"><img class="easa-logo" src="assets/easa-logo.png" alt="EASA" /></div>
               <strong>EASA</strong>
               <span>A1 and A3</span>
             </article>
             <article class="reg-card">
-              <div class="logo-frame faa-frame"><img src="assets/faa-logo.png" alt="Federal Aviation Administration" /></div>
+              <div class="logo-box"><img class="faa-logo" src="assets/faa-logo.png" alt="Federal Aviation Administration" /></div>
               <strong>FAA</strong>
               <span>Part 107 Certificate</span>
             </article>
@@ -74,13 +74,13 @@
         </section>
 
         <section class="panel capability-panel">
-          <div class="panel-header-line">
-            <div class="panel-title">Commercial Capability</div>
-            <span>Survey, inspection and media delivery</span>
+          <div class="panel-heading">
+            <h2>Commercial Capability</h2>
+            <p>Survey, inspection and media delivery</p>
           </div>
           <div class="capability-content">
-            <div class="dd-icon"><img src="assets/dronedeploy-logo.png" alt="DroneDeploy" /></div>
-            <div>
+            <div class="dd-logo-box"><img src="assets/dronedeploy-logo.png" alt="DroneDeploy" /></div>
+            <div class="capability-text">
               <strong>DroneDeploy Certified</strong>
               <div class="capability-list">
                 <span>Fundamentals</span>
@@ -96,7 +96,7 @@
       <section class="panel media-panel">
         <div class="media-topline">
           <div>
-            <div class="panel-title">Secur-IT UAV Media</div>
+            <h2>Secur-IT UAV Media</h2>
             <p>Operational footage, surveys, inspections and aerial media</p>
           </div>
           <span class="live-pill">Live Wall</span>
@@ -116,14 +116,10 @@
           <span>Approved UAS Operator, advanced operations authorised under defined procedures</span>
         </div>
       </section>
-
       <section class="footer-fleet">
-        <div class="panel-title">Operational Fleet</div>
-        <div class="fleet-ticker" aria-label="Operational fleet list">
-          <div class="fleet-track" id="fleetTrack"></div>
-        </div>
+        <h2>Operational Fleet</h2>
+        <div class="fleet-ticker"><div class="fleet-track" id="fleetTrack"></div></div>
       </section>
-
       <section class="footer-update">
         <div class="footer-icon calendar">▣</div>
         <div>

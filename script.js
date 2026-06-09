@@ -105,15 +105,14 @@ function startRefreshTimer(){
 }
 
 function initYouTubeBackground(){
-  const bg = el('mediaBg');
-  if(bg && VIDEO_PLAYLIST.length){
-    bg.style.backgroundImage = `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[0]}/hqdefault.jpg")`;
-  }
+  setVideoBackground(0);
 }
 
 function setVideoBackground(index){
   const bg = el('mediaBg');
-  if(bg) bg.style.backgroundImage = `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[index]}/hqdefault.jpg")`;
+  if(bg && VIDEO_PLAYLIST[index]){
+    bg.style.backgroundImage = `url("https://i.ytimg.com/vi/${VIDEO_PLAYLIST[index]}/hqdefault.jpg")`;
+  }
 }
 
 function onYouTubeIframeAPIReady(){
@@ -153,6 +152,7 @@ function onYouTubeIframeAPIReady(){
     }
   });
 }
+
 window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 renderFleetTicker();

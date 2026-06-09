@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flight Data Wall</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="display-only">
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-mark">SIT</div>
+        <div>
+          <h1>Flight Data Wall</h1>
+          <p>Global Data from all Secur-IT UAS Pilots</p>
+        </div>
+      </div>
+      <div class="top-status">
+        <span class="status-dot"></span>
+        <span id="refreshPill">Next stats refresh: —</span>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="left-stack">
+        <section class="panel overview-panel">
+          <div class="section-title">Secur-IT Group Overview</div>
+          <div class="stats-grid">
+            <article class="stat-card">
+              <div class="stat-icon">⌁</div>
+              <div>
+                <span class="label">Drones flown</span>
+                <strong id="dronesFlown">—</strong>
+              </div>
+            </article>
+            <article class="stat-card">
+              <div class="stat-icon">◷</div>
+              <div>
+                <span class="label">Flight hours</span>
+                <strong id="flightHours">—</strong>
+              </div>
+            </article>
+            <article class="stat-card wide-stat">
+              <div class="stat-icon">⌖</div>
+              <div>
+                <span class="label">Number of flights</span>
+                <strong id="numberOfFlights">—</strong>
+              </div>
+            </article>
+            <article class="stat-card wide-stat">
+              <div class="stat-icon">⌁</div>
+              <div>
+                <span class="label">Distance flown</span>
+                <strong id="distanceFlown">—</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel compact-panel">
+          <div class="section-title">Drone Types</div>
+          <div class="chip-grid" id="droneTypes"></div>
+        </section>
+
+        <section class="panel compact-panel cert-panel">
+          <div class="section-title">Pilot Active Certificates</div>
+          <div class="cert-grid" id="certificates"></div>
+        </section>
+
+        <section class="panel safety-panel">
+          <div class="section-title centre-title">Flight Safety by AirData</div>
+          <div class="safety-grid" id="safetyItems"></div>
+        </section>
+      </section>
+
+      <section class="panel media-panel">
+        <div class="media-topline">
+          <div>
+            <span class="section-title">Secur-IT UAV Media</span>
+            <p>Operational footage, survey work and aerial media</p>
+          </div>
+          <span class="live-pill">LIVE WALL</span>
+        </div>
+        <div class="media-bg" id="mediaBg"></div>
+        <div class="video-wrap">
+          <div id="yt-player" aria-label="YouTube playlist player"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bottombar">
+      <div class="authority-card">
+        <div class="authority-icon">✓</div>
+        <div>
+          <strong>CAA Operational Authorisation Granted</strong>
+          <span>Approved UAS Operator · Advanced operations authorised under defined procedures</span>
+        </div>
+      </div>
+      <div class="airdata-card">
+        <a href="https://certificates.airdata.com/BmNedR" target="_blank" rel="noopener">
+          <img alt="Airdata UAV Drone Safety Verified Badge" src="https://certificates.airdata.com/badge?i=BmNedR&amp;r=D7qE&amp;t=7&amp;m=3&amp;size=4&amp;c=1" />
+        </a>
+        <span id="dataStatus">AirData status: waiting for stats.json</span>
+      </div>
+      <div class="progress-card">
+        <span id="lastUpdated">Last data update: —</span>
+        <div class="progress"><div id="bar"></div></div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

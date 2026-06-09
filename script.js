@@ -2,6 +2,15 @@ const STATS_URL = './stats.json';
 const AIRDATA_CERT_URL = 'https://certificates.airdata.com/BmNedR';
 const REFRESH_EVERY_MS = 60 * 60 * 1000;
 
+const DEFAULT_STATS = {
+  dronesFlown: '13',
+  flightHours: '87 hours',
+  distanceFlown: '490 miles',
+  numberOfFlights: '954',
+  lastUpdated: '2026-06-09T09:00:00.000Z',
+  source: AIRDATA_CERT_URL
+};
+
 const VIDEO_PLAYLIST = [
   '9P-4ax971wo',
   '-HFS6P-FBOc',
@@ -43,20 +52,24 @@ function renderStaticSections(){
   `).join('');
 }
 
+function renderStats(data, statusPrefix = 'Verified by AirData'){
+  setText('dronesFlown', data.dronesFlown);
+  setText('flightHours', stripUnit(data.flightHours, 'hours'));
+  setText('distanceFlown', stripUnit(data.distanceFlown, 'miles'));
+  setText('numberOfFlights', data.numberOfFlights);
+  setText('lastUpdated', `Last data update: ${formatDate(data.lastUpdated)}`);
+  setText('dataStatus', `${statusPrefix} · ${formatDate(data.lastUpdated)}`);
+}
+
 async function loadStats(){
   try{
     const res = await fetch(`${STATS_URL}?ts=${Date.now()}`, { cache:'no-store' });
     if(!res.ok) throw new Error(`stats.json returned ${res.status}`);
     const data = await res.json();
-    setText('dronesFlown', data.dronesFlown);
-    setText('flightHours', stripUnit(data.flightHours, 'hours'));
-    setText('distanceFlown', stripUnit(data.distanceFlown, 'miles'));
-    setText('numberOfFlights', data.numberOfFlights);
-    setText('lastUpdated', `Last data update: ${formatDate(data.lastUpdated)}`);
-    setText('dataStatus', `Verified by AirData · ${formatDate(data.lastUpdated)}`);
+    renderStats({ ...DEFAULT_STATS, ...data });
   }catch(err){
-    console.error(err);
-    setText('dataStatus', 'AirData status: stats.json unavailable, using fallback display');
+    console.warn('Using built-in fallback stats because stats.json could not be loaded:', err);
+    renderStats(DEFAULT_STATS, 'Fallback display, AirData link available');
   }
 }
 
@@ -76,12 +89,14 @@ function startRefreshTimer(){
   const start = Date.now();
   const next = new Date(start + REFRESH_EVERY_MS);
   setText('refreshPill', `Next stats refresh: ${next.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' })}`);
+
   clearInterval(window._progressTimer);
   window._progressTimer = setInterval(() => {
     const pct = Math.min(100, ((Date.now() - start) / REFRESH_EVERY_MS) * 100);
     const bar = el('bar');
     if(bar) bar.style.width = `${pct.toFixed(2)}%`;
   }, 500);
+
   clearTimeout(window._refreshTimer);
   window._refreshTimer = setTimeout(async () => {
     await loadStats();
@@ -130,6 +145,7 @@ function onYouTubeIframeAPIReady(){
 window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
 renderStaticSections();
+renderStats(DEFAULT_STATS, 'Loading AirData');
 initYouTubeBackground();
-loadStats();
 startRefreshTimer();
+loadStats();

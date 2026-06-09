@@ -12,24 +12,21 @@ const FALLBACK_STATS = {
 };
 
 const VIDEO_PLAYLIST = [
-  '9P-4ax971wo',
-  '-HFS6P-FBOc',
-  'UuNGXrXry4k',
-  'OwUwgpqgcMA',
-  'NMoUBGDDIfM',
-  'HZW2ZO9hDk0',
-  '8IecdNKvsL0',
-  'lJU1ibqD5QM',
-  'Eh16Se0hRxM',
-  '5g3n16s93-Q',
-  'AXboor4SRIA',
-  'iF3Yve_zMPM'
+  "OwUwgpqgcMA",
+  "NMoUBGDDIfM",
+  "HZW2ZO9hDk0",
+  "8IecdNKvsL0",
+  "lJU1ibqD5QM",
+  "Eh16Se0hRxM",
+  "5g3n16s93-Q",
+  "AXboor4SRIA",
+  "iF3Yve_zMPM"
 ];
 
 const FLEET = [
   'Matrice 4TD',
   'Matrice 4E',
-  'DJI Dock 2',
+  'DJI Dock 3',
   'Avata 360',
   'Avata 2',
   'Mini 4 Pro',
